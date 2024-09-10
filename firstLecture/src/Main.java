@@ -1,19 +1,20 @@
 public class Main {
     public static void main(String[] args) {
-        /*
-        int[] number;
-        int[] reverseNumber;
-
-        number = FirstExercise.buildArray();
-        reverseNumber = FirstExercise.reverseArray(number);
-        FirstExercise.printArray(reverseNumber);
-        */
-
-        Counter.main(args);
+        //FirstExercise.main(args);
+        //Counter.main(args);
     }
 }
 
 class FirstExercise {
+    public static void main(String[] args) {
+        int[] number;
+        int[] reverseNumber;
+
+        number = buildArray();
+        reverseNumber = reverseArray(number);
+        printArray(reverseNumber);
+    }
+
     public static int[] buildArray() {
         int[] number = new int[10];
 
