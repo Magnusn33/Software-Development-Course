@@ -9,12 +9,12 @@ public class ShortQueueTest {
         shortQueue.put("stringTest");
         assertNull(shortQueue.take());
     }
-
+    @Test
     void isFullTest() {
         try {
             assertNotNull(shortQueue.take());
         } catch (Exception e) {
-            assertEquals(false, shortQueue.isFull());
+            assertFalse(shortQueue.isFull());
         }
     }
 
