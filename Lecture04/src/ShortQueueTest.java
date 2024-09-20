@@ -18,5 +18,20 @@ public class ShortQueueTest {
         }
     }
 
+    @Test
+    void isFullTestWhenQueueIsEmpty() {
+        assertFalse(shortQueue.isFull());
+    }
+
+    @Test
+    void isFullTestWhenQueueHasOneElement() {
+        shortQueue.put("Test");
+        assertFalse(shortQueue.isFull());
+    }
+
+    @Test
+    void isFullTestWhenQueueIsFull() {
+        // Need to determine the capacity of ShortQueue to write this test
+    }
 }
 
