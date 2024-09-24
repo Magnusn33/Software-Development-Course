@@ -11,7 +11,4 @@ public class my_array {
         return true;
     }
 
-
-
-
 }
