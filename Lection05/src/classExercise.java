@@ -55,6 +55,9 @@ public class classExercise<E> {
         System.out.println("Elements after reversing:");
         stringList.displayElements();
 
+        System.out.println();
+        System.out.println(stringList.getElement(1));
+
 
     }
 }
