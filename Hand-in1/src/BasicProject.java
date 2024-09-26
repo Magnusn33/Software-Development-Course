@@ -5,4 +5,9 @@ public class BasicProject extends Activity {
 
         return 15;
     }
+
+    @Override
+    String getType() {
+        return "BasicProject";
+    }
 }

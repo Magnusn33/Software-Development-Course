@@ -1,9 +1,12 @@
 abstract class Activity {
 
     int getEcts() {
-        int ects = 0;
 
-        return ects;
+        return 0;
+    }
+
+    String getType() {
+        return "";
     }
 
 }
