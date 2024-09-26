@@ -1,12 +1,11 @@
-public class BasicCourse extends Activity {
-    @Override
-    int getEcts() {
-
-        return 5;
+public class BasicCourse extends Course {
+    public BasicCourse(int ects, String name) {
+        super(ects, name);
     }
 
     @Override
     String getType() {
         return "BasicCourse";
     }
+
 }

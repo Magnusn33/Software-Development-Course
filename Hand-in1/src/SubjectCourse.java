@@ -1,12 +1,11 @@
-public class SubjectCourse extends Activity {
-    @Override
-    int getEcts() {
-
-        return 5
+public class SubjectCourse extends Course {
+    public SubjectCourse(int ects, String name) {
+        super(ects, name);
     }
 
     @Override
     String getType() {
         return "SubjectCourse";
     }
+
 }
