@@ -5,6 +5,6 @@ public class ElectiveCourse extends Course {
 
     @Override
     String getType() {
-        return "BasicCourse";
+        return "ElectiveCourse";
     }
 }
