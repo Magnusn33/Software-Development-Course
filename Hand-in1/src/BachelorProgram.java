@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BachelorProgram {
+    // List for courses in the bachelor program
     List<Course> courses = new ArrayList<>();
 
     // Method for adding an instance to the list of courses
