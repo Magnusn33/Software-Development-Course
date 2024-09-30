@@ -7,16 +7,6 @@ public class BachelorProgram {
     // Method for adding an instance to the list of courses
     void addCourse(Course course) {courses.add(course);}
 
-    // Method to print all courses in the list
-    public static void printInstances(int[] counts) {
-        System.out.println("ElectiveCourse: " + counts[0]);
-        System.out.println("SubjectCourse: " + counts[1]);
-        System.out.println("BasicCourse: " + counts[2]);
-        System.out.println("BachelorProject: " + counts[3]);
-        System.out.println("BasisProject: " + counts[4]);
-        System.out.println("SubjectProject: " + counts[5]);
-    }
-
     // Method to count the amount of instances of a class
     public static int[] CountInstance(List<Course> courses) {
         int[] array = new int[6];

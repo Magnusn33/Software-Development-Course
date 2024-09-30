@@ -25,9 +25,6 @@ public class Main {
         // Print all courses in the program
         BachelorProgram.printCourses(program.courses);
 
-        // Print the number of instances of each course type
-        BachelorProgram.printInstances(BachelorProgram.CountInstance(program.courses));
-
         // Print the total number of ECTS in the program
         System.out.println("Total ECTS: " + BachelorProgram.countTotalEcts(program.courses));
 
