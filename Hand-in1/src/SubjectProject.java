@@ -1,6 +1,6 @@
 public class SubjectProject extends Course {
-    public SubjectProject(String name) {
-        super(15, name);
+    public SubjectProject(String name, String NameOfModule) {
+        super(15, name, NameOfModule);
     }
 
     @Override
