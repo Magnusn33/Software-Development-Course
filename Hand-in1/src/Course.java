@@ -1,7 +1,7 @@
 public abstract class Course {
-    private int ects;
-    private String name;
-    private String NameOfModule;
+     int ects;
+     String name;
+     String NameOfModule;
 
     public Course(int ects, String name, String NameOFModule) {
         this.ects = ects;

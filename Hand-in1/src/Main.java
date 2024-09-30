@@ -12,8 +12,15 @@ public class Main {
         program.addCourse(new BasisProject("RPA3"));
         program.addCourse(new SubjectProject("Gamification", "GameDesign"));
         program.addCourse(new SubjectCourse(5, "Digital Stress", "GameDesign"));
-        program.addCourse(new SubjectCourse(85, "Digital Stress", "Design"));
-
+        program.addCourse(new SubjectCourse(5, "Stress", "Design"));
+        program.addCourse(new BasicCourse(10, "EssentialComputing2"));
+        program.addCourse(new BasicCourse(10, "EssentialComputing3"));
+        program.addCourse(new BasicCourse(10, "EssentialComputing4"));
+        program.addCourse(new BasicCourse(10, "EssentialComputing5"));
+        program.addCourse(new BasicCourse(10, "EssentialComputing6"));
+        program.addCourse(new BasicCourse(10, "EssentialComputing7"));
+        program.addCourse(new BasicCourse(10, "EssentialComputing8"));
+        program.addCourse(new BasicCourse(10, "EssentialComputing9"));
 
         // Print all courses in the program
         BachelorProgram.printCourses(program.courses);
