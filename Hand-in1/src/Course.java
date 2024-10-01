@@ -3,6 +3,7 @@ public abstract class Course {
      String name;
      String NameOfModule;
 
+     // contructor for the universal values of a course
     public Course(int ects, String name, String NameOFModule) {
         this.ects = ects;
         this.name = name;

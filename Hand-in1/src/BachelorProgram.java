@@ -10,6 +10,7 @@ public class BachelorProgram {
 
     // Method to count the amount of instances of a class
     public static int[] CountInstance(List<Course> courses) {
+        // Array to store the number of instances in
         int[] array = new int[6];
 
         // Count number of x
@@ -29,13 +30,13 @@ public class BachelorProgram {
             }
         }
         return array;
-
     }
 
     // Method to count the amount of ECTS
     public static int countTotalEcts(List<Course> courses) {
         int totalEcts = 0;
 
+        // Iterate through the list and add the ects together
         for (Course course : courses) {
             totalEcts += course.getEcts();
         }
@@ -52,20 +53,27 @@ public class BachelorProgram {
 
     // Method to check if there are two instances with the same name
     public static boolean checkRepeatingNames(List<Course> courses) {
+        // Initializes lists to keep track of course names and their counts
         List<String> courseNames = new ArrayList<>();
         List<Integer> courseCounts = new ArrayList<>();
 
+        // Iterate through the list of courses
         for (Course course : courses) {
+            // Get the name of the current course
             String courseName = course.getName();
+            // Find the index of the course name in courseNames list
             int index = courseNames.indexOf(courseName);
             if (index == -1) {
+                // If the course name is not already in the list, add it and set its count to 1
                 courseNames.add(courseName);
                 courseCounts.add(1);
             } else {
+                // If the course name is already in the list, increment its count
                 courseCounts.set(index, courseCounts.get(index) + 1);
             }
         }
 
+        // Check for any course names that are 1<
         for (int i = 0; i < courseNames.size(); i++) {
             if (courseCounts.get(i) > 1)
                 return false;

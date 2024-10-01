@@ -3,6 +3,7 @@ import org.junit.jupiter.api.Test;
 
 class BachelorProgramTest {
 
+    // Test if two instances with same name
     @Test
     void testDobbelName() {
         BachelorProgram program = new BachelorProgram();
@@ -28,6 +29,7 @@ class BachelorProgramTest {
         Assertions.assertFalse(BachelorProgram.valid(program.courses, BachelorProgram.CountInstance(program.courses)));
     }
 
+    // test if there is missing a BA project
     @Test
     void testMissingBachelorProject() {
         BachelorProgram program = new BachelorProgram();
@@ -53,6 +55,7 @@ class BachelorProgramTest {
         Assertions.assertFalse(BachelorProgram.valid(program.courses, BachelorProgram.CountInstance(program.courses)));
     }
 
+    // test if there are enough basis projects
     @Test
     void testMissingBasisProject() {
         BachelorProgram program = new BachelorProgram();
@@ -78,6 +81,7 @@ class BachelorProgramTest {
         Assertions.assertFalse(BachelorProgram.valid(program.courses, BachelorProgram.CountInstance(program.courses)));
     }
 
+    // test if there are too few ects
     @Test
     void testToFewECTS() {
         BachelorProgram program = new BachelorProgram();
@@ -103,6 +107,7 @@ class BachelorProgramTest {
         Assertions.assertFalse(BachelorProgram.valid(program.courses, BachelorProgram.CountInstance(program.courses)));
     }
 
+    // test if there are too many ects
     @Test
     void testToManyECTS() {
         BachelorProgram program = new BachelorProgram();
