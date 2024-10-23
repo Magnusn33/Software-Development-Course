@@ -2,83 +2,81 @@ package com.example.project2;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import java.sql.*;
 
 public class HelloApplication extends Application {
-    Button grd[][] =new Button[3][3];
-    TextField field = new TextField();
-    String turn ="X";
+
     @Override
-    public void start(Stage stage)  {
-        for(int i=0;i<3;i++)for(int j=0;j<3;j++){
-            grd[i][j] = new Button(" ");
-            grd[i][j].setPrefSize(150,150);
-            grd[i][j].setStyle("-fx-font-size: 60; -fx-font-weight: bold;");
-        }
-        VBox vbox = new VBox(
-                new HBox(grd[0][0],grd[1][0],grd[2][0]),
-                new HBox(grd[0][1],grd[1][1],grd[2][1]),
-                new HBox(grd[0][2],grd[1][2],grd[2][2]),
-                field
-        );
-        grd[0][0].setOnAction(e-> makeDraw(0,0));
-        grd[1][0].setOnAction(e-> makeDraw(1,0));
-        grd[2][0].setOnAction(e-> makeDraw(2,0));
-        grd[0][1].setOnAction(e-> makeDraw(0,1));
-        grd[1][1].setOnAction(e-> makeDraw(1,1));
-        grd[2][1].setOnAction(e-> makeDraw(2,1));
-        grd[0][2].setOnAction(e-> makeDraw(0,2));
-        grd[1][2].setOnAction(e-> makeDraw(1,2));
-        grd[2][2].setOnAction(e-> makeDraw(2,2));
+    public void start(Stage stage) {
 
-        field.setText(turn+" turn");
-        field.setPrefSize(450,150);
-        field.setStyle("-fx-font-size: 60; -fx-font-weight: bold;");
-        Scene scene = new Scene(vbox, 450, 600);
-        stage.setTitle("Hello!");
+        GridPane root = new GridPane();
+
+        for (int i = 0; i < 4; i++) {
+            root = initializeColumn(root, i, "Programme: " + (i + 1));
+
+        }
+
+        showStage(stage, root);    }
+
+    public GridPane initializeColumn(GridPane root, int pos, String programmeName) {
+
+        //Initialize dropdown menu 1
+        Label label = new Label(programmeName);
+        ComboBox<String> a = setBox();
+        a.setPromptText("Select Programme");
+
+        //Initialize the dropdown menu 2
+        ComboBox<String> b = setBox();
+        b.setPromptText("Select Course");
+
+        //Initialize the select button
+        Button selectButton = new Button("Add");
+
+        //Initialize textarea
+        TextArea textarea = new TextArea();
+        textarea = whenChosen(textarea, b, selectButton);
+
+        //Add to root
+        root.add(label, pos, 0);
+        root.add(a, pos,1);
+        root.add(b, pos, 2);
+        root.add(selectButton, pos, 3);
+        root.add(textarea, pos,4);
+
+        return root;
+    }
+
+    public TextArea whenChosen(TextArea textarea, ComboBox<String> a, Button selectButton) {
+
+        selectButton.setOnAction(event -> {
+            String sel = a.getValue();
+            textarea.setText(sel);
+        });
+
+        return textarea;
+    }
+
+    public ComboBox<String> setBox () {
+        ComboBox<String> c = new ComboBox<String>();
+        c.getItems().addAll(Model.baseProgram());
+
+        return c;
+    }
+
+    public void showStage(Stage stage, GridPane root) {
+        Scene scene = new Scene(root, 1000, 1000);
         stage.setScene(scene);
-        stage.show();
-    }
-
-    private void makeDraw(int x, int y) {
-        // try to make a draw at location (x,y)
-        // ignore if taken
-        String txt = grd[x][y].getText();
-        if(!txt.equals(" "))return;
-        grd[x][y].setText(turn);
-        if(turn.equals("X"))turn="O"; else turn="X";
-        field.setText(turn+" turn");
-        String win=checkWinner();
-        if(!win.equals(""))field.setText(win+" wins");
-    }
-
-    private String checkWinner() {
-        // should return name af winner or empty string
-        if(line(0,0,1,1,2,2))return grd[1][1].getText();
-        if(line(0,2,1,1,2,1))return grd[1][1].getText();
-        for(int x=0;x<3;x++){
-            if(line(x,0,x,1,x,1))return grd[x][0].getText();
-        }
-        for(int y=0;y<3;y++){
-            if(line(0,y,1,y,2,y))return grd[0][y].getText();
-        }
-        return "";
-    }
-
-    boolean line(int x,int y,int x1,int y1,int x2, int y2){
-        // check whether there is a line  (x,y)-(x1,y1)-(x2,y2)
-        if(grd[x][y].getText().equals(grd[x1][y1].getText()) &&
-                grd[x][y].getText().equals(grd[x2][y2].getText()) &&
-                !grd[x][y].getText().equals(" ")
-        ) return true;
-        return false;
+        stage.show(); // Add this line to display the stage
     }
 
     public static void main(String[] args) {
+        CreateProgrammes.main(args);
         launch();
+        InteractWithSql.runSqlCmd("DROP TABLE Student");
     }
 }
