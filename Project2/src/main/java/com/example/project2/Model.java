@@ -90,4 +90,35 @@ SELECT student, SUM(c.ects) as sumects from participation
     left outer join Course C on Particioation.course = c.name
 Group by participation.student
 
+
+SELECT name
+FROM sqlite_master
+WHERE type = 'table';
+
+
+SELECT *
+FROM Humtek;
+SELECT *
+FROM Natbach;
+SELECT *
+FROM Informatik;
+SELECT *
+FROM Astrology;
+
+DROP TABLE Humtek;
+DROP TABLE Natbach;
+DROP TABLE Informatik;
+DROP TABLE Astrology;
+
+INSERT OR REPLACE INTO Humtek (name) VALUES ('a');
+
+
+INSERT INTO new_table (name, ects)
+VALUES ('ExampleName', 5);
+
+CREATE TABLE new_table
+(
+    name TEXT,
+    ects INT
+);
  */
