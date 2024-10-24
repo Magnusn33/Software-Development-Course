@@ -71,7 +71,7 @@ public class HelloApplication extends Application {
     public ComboBox<String> setBoxCourse (ComboBox<String> boxProgramme) {
         ComboBox<String> c = new ComboBox<String>();
 
-        c.setOnAction(e -> {
+        boxProgramme.setOnAction(e -> {
             String sel = boxProgramme.getValue();
             if (sel != null) { // Check if a value has been selected
                 System.out.println("Selected Programme: " + sel);
