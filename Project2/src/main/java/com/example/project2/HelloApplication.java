@@ -31,7 +31,7 @@ public class HelloApplication extends Application {
         a.setPromptText("Select Programme");
 
         //Initialize the dropdown menu 2
-        ComboBox<String> b = setBoxCourse();
+        ComboBox<String> b = setBoxCourse(a);
         b.setPromptText("Select Course");
 
         //Initialize the select button
@@ -68,13 +68,15 @@ public class HelloApplication extends Application {
         return c;
     }
 
-    public ComboBox<String> setBoxCourse () {
+    public ComboBox<String> setBoxCourse (ComboBox<String> boxProgramme) {
         ComboBox<String> c = new ComboBox<String>();
-        ComboBox<String> a = setBoxProgramme();
 
-        a.setOnAction(e -> {
-            String sel = a.getValue();
-            c.getItems().addAll(Model.baseCourse(sel));
+        c.setOnAction(e -> {
+            String sel = boxProgramme.getValue();
+            if (sel != null) { // Check if a value has been selected
+                System.out.println("Selected Programme: " + sel);
+                c.getItems().addAll(Model.baseCourse(sel));
+            }
         });
 
         return c;
