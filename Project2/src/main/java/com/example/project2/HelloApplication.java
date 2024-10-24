@@ -71,9 +71,8 @@ public class HelloApplication extends Application {
     public ComboBox<String> setBoxCourse () {
         ComboBox<String> c = new ComboBox<String>();
         ComboBox<String> a = setBoxProgramme();
-        c.getItems().addAll(Model.baseProgram());
 
-        a.setOnAction(event -> {
+        a.setOnAction(e -> {
             String sel = a.getValue();
             c.getItems().addAll(Model.baseCourse(sel));
         });
