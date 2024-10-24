@@ -18,6 +18,7 @@ public class HelloApplication extends Application {
 
         for (int i = 0; i < 4; i++) {
             root = initializeColumn(root, i, "Programme: " + (i + 1));
+
         }
 
         showStage(stage, root);    }
@@ -29,11 +30,8 @@ public class HelloApplication extends Application {
         ComboBox<String> a = setBoxProgramme();
         a.setPromptText("Select Programme");
 
-        //Initialize the select button
-        Button setButton = new Button("Set");
-
         //Initialize the dropdown menu 2
-        ComboBox<String> b = setBoxCourse(a, setButton);
+        ComboBox<String> b = setBoxCourse(a);
         b.setPromptText("Select Course");
 
         //Initialize the select button
@@ -41,31 +39,23 @@ public class HelloApplication extends Application {
 
         //Initialize textarea
         TextArea textarea = new TextArea();
-        textarea = whenChosen(textarea, b, selectButton, a);
+        textarea = whenChosen(textarea, b, selectButton);
 
         //Add to root
         root.add(label, pos, 0);
         root.add(a, pos,1);
-        root.add(setButton, pos, 2);
-        root.add(b, pos, 3);
-        root.add(selectButton, pos, 4);
-        root.add(textarea, pos,5);
+        root.add(b, pos, 2);
+        root.add(selectButton, pos, 3);
+        root.add(textarea, pos,4);
 
         return root;
     }
 
-    public TextArea whenChosen(TextArea textarea, ComboBox<String> setBoxCourse, Button selectButton, ComboBox<String> setBoxProgramme) {
+    public TextArea whenChosen(TextArea textarea, ComboBox<String> a, Button selectButton) {
 
         selectButton.setOnAction(event -> {
-            String sel = setBoxCourse.getValue();
-            //Fills out textarea. Appending the old text with the new
-            textarea.setText(textarea.getText() + '\n' + sel);
-
-            //Build table if not exist and add data
-            InteractWithSql.runSqlCmd("CREATE TABLE IF NOT EXISTS " + setBoxProgramme.getValue() +  " (name TEXT PRIMARY KEY);");
-            InteractWithSql.insertDataIntoTbl("INSERT INTO " + setBoxProgramme.getValue() + " (name) VALUES ('" + setBoxCourse.getValue() + "');");
-            System.out.println(InteractWithSql.getDataFromTbl("SELECT name FROM " + setBoxProgramme.getValue(), "name"));
-
+            String sel = a.getValue();
+            textarea.setText(sel);
         });
 
         return textarea;
@@ -78,13 +68,12 @@ public class HelloApplication extends Application {
         return c;
     }
 
-    public ComboBox<String> setBoxCourse (ComboBox<String> boxProgramme, Button setButton) {
+    public ComboBox<String> setBoxCourse (ComboBox<String> boxProgramme) {
         ComboBox<String> c = new ComboBox<String>();
 
-        // sets the options on setBoxCourse based on the chosen field in setBoxProgramme
-        setButton.setOnAction(e -> {
+        boxProgramme.setOnAction(e -> {
             String sel = boxProgramme.getValue();
-            if (sel != null) {
+            if (sel != null) { // Check if a value has been selected
                 System.out.println("Selected Programme: " + sel);
                 c.getItems().addAll(Model.baseCourse(sel));
             }
@@ -100,6 +89,8 @@ public class HelloApplication extends Application {
     }
 
     public static void main(String[] args) {
+        CreateProgrammes.main(args);
         launch();
+        InteractWithSql.runSqlCmd("DROP TABLE Student");
     }
 }

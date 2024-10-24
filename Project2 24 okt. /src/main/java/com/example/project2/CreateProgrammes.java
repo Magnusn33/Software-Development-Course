@@ -7,8 +7,8 @@ public class CreateProgrammes {
     public static void main(String[] args) {
 
 
-        InteractWithSql.runSqlCmd("CREATE TABLE IF NOT EXISTS Humtek (name TEXT PRIMARY KEY);");
-        InteractWithSql.insertDataIntoTbl("INSERT INTO Course (name) VALUES ('John Doe')");
+        InteractWithSql.runSqlCmd("CREATE TABLE IF NOT EXISTS Student (name TEXT PRIMARY KEY);");
+        InteractWithSql.insertDataIntoTbl("INSERT INTO Student (name) VALUES ('John Doe')");
         System.out.println(InteractWithSql.getDataFromTbl("SELECT name FROM Student", "name"));
 
 
