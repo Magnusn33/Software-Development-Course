@@ -52,7 +52,7 @@ public class Model{
     List<String> baseProject(String base) {
         return Arrays.asList("BP1 " + base, "BP2 " + base, "BP3 " + base, "Bachelorproject " + base);
     }
-    List<String> subjectCourse(String base) {
+    public static List<String> subjectCourse(String base) {
         if (base.equals("Computer Science")) {
             return Arrays.asList("Essential Computing",
                     "Software Development","Interactive Digital Systems" );
@@ -81,3 +81,13 @@ public class Model{
         return false;
     }
 }
+
+/*
+CREATE TABLE IF NOT EXISTS COURSE (
+    student references Student(name),
+
+SELECT student, SUM(c.ects) as sumects from participation
+    left outer join Course C on Particioation.course = c.name
+Group by participation.student
+
+ */
