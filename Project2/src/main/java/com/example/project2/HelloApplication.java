@@ -27,11 +27,11 @@ public class HelloApplication extends Application {
 
         //Initialize dropdown menu 1
         Label label = new Label(programmeName);
-        ComboBox<String> a = setBox();
+        ComboBox<String> a = setBoxProgramme();
         a.setPromptText("Select Programme");
 
         //Initialize the dropdown menu 2
-        ComboBox<String> b = setBox();
+        ComboBox<String> b = setBoxCourse();
         b.setPromptText("Select Course");
 
         //Initialize the select button
@@ -61,9 +61,22 @@ public class HelloApplication extends Application {
         return textarea;
     }
 
-    public ComboBox<String> setBox () {
+    public ComboBox<String> setBoxProgramme () {
         ComboBox<String> c = new ComboBox<String>();
         c.getItems().addAll(Model.baseProgram());
+
+        return c;
+    }
+
+    public ComboBox<String> setBoxCourse () {
+        ComboBox<String> c = new ComboBox<String>();
+        ComboBox<String> a = setBoxProgramme();
+        c.getItems().addAll(Model.baseProgram());
+
+        a.setOnAction(event -> {
+            String sel = a.getValue();
+            c.getItems().addAll(Model.baseCourse(sel));
+        });
 
         return c;
     }
