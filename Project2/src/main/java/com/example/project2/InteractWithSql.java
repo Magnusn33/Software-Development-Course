@@ -89,7 +89,7 @@ public class InteractWithSql {
 
     public static void dropAllTables() {
         Connection conn = setConnection();
-        String[] tableNames = {"HumTek", "NatBach", "Informatics", "Computer Science", "Astronomy" };
+        String[] tableNames = {"HumTek", "NatBach", "Informatics", "Computer Science", "Astrology" };
         try {
             for (String tableName : tableNames) {
                 String sql = "DROP TABLE IF EXISTS " + tableName;

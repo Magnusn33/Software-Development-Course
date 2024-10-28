@@ -53,10 +53,6 @@ public class Model{
         return Arrays.asList("BP1 " + base, "BP2 " + base, "BP3 " + base, "Bachelorproject " + base);
     }
     public static List<String> subjectCourse(String base) {
-        if (base.equals("Computer Science")) {
-            return Arrays.asList("Essential Computing",
-                    "Software Development","Interactive Digital Systems" );
-        }
         if (base.equals("Informatik")) {
             return Arrays.asList("Organisatorisk forandring og IT",
                     "BANDIT","Interactive Digital Systems" );
@@ -70,8 +66,8 @@ public class Model{
     String subjectProject(String subject) {
         return "Subject module project in "+subject;
     }
-    int courseWeight(String course){
-        if(course.equals("Software Development"))return 10;
+
+    public static int courseWeight(String course){
         if(course.equals("BANDIT"))return 10;
         return 5;
     }
@@ -81,44 +77,3 @@ public class Model{
         return false;
     }
 }
-
-/*
-CREATE TABLE IF NOT EXISTS COURSE (
-    student references Student(name),
-
-SELECT student, SUM(c.ects) as sumects from participation
-    left outer join Course C on Particioation.course = c.name
-Group by participation.student
-
-
-SELECT name
-FROM sqlite_master
-WHERE type = 'table';
-
-
-SELECT *
-FROM Humtek;
-SELECT *
-FROM Natbach;
-SELECT *
-FROM Informatik;
-SELECT *
-FROM Astrology;
-
-DROP TABLE Humtek;
-DROP TABLE Natbach;
-DROP TABLE Informatik;
-DROP TABLE Astrology;
-
-INSERT OR REPLACE INTO Humtek (name) VALUES ('a');
-
-
-INSERT INTO new_table (name, ects)
-VALUES ('ExampleName', 5);
-
-CREATE TABLE new_table
-(
-    name TEXT,
-    ects INT
-);
- */

@@ -19,11 +19,8 @@ public class HelloApplication extends Application {
         root = ProgrammeColumn.initializeColumnProgram(root, 0, "Program: ");
         root = SubjectColumn.initializeColumnSubject(root, 1, "Subject 1: ");
         root = SubjectColumn.initializeColumnSubject(root, 2, "Subject 2: ");
-        //root = initializeColumnElective(root, 3, "Elective: ");
-
         showStage(stage, root);
     }
-
 
     public void showStage(Stage stage, GridPane root) {
         Scene scene = new Scene(root, 2000, 700);
@@ -34,6 +31,7 @@ public class HelloApplication extends Application {
     public static void main(String[] args) {
         launch();
         System.out.println("Dropping all tables in database to reset");
+        // Comment out this line of code if you want to look at the tables
         InteractWithSql.dropAllTables();
     }
 }

@@ -53,6 +53,7 @@ public class ProgrammeColumn {
     }
 
     public static TextArea whenChosenProgramme(TextArea textarea, ComboBox<String> setBoxCourse, Button selectButton, Button setButton, ComboBox<String> setBoxProgramme) {
+        //When the programme is chosen
         selectButton.setOnAction(event -> {
             String sel = setBoxCourse.getValue();
             //Fills out textarea. Appending the old text with the new
@@ -60,7 +61,7 @@ public class ProgrammeColumn {
 
             //Build table if not exist and add data
             InteractWithSql.runSqlCmd("CREATE TABLE IF NOT EXISTS " + setBoxProgramme.getValue() +  " (name TEXT PRIMARY KEY, ects INTEGER);");
-            InteractWithSql.insertDataIntoTbl("INSERT OR REPLACE INTO " + setBoxProgramme.getValue() + " VALUES ('" + setBoxCourse.getValue() + "', 5);");
+            InteractWithSql.insertDataIntoTbl("INSERT OR REPLACE INTO " + setBoxProgramme.getValue() + " VALUES ('" + setBoxCourse.getValue() + "'," + Model.courseWeight(setBoxCourse.getValue()) + " );");
 
             //Print data
             System.out.println(InteractWithSql.getDataFromTbl("SELECT name FROM " + setBoxProgramme.getValue(), "name"));
