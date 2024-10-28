@@ -1,11 +1,16 @@
 package com.example.project2;
 
+/*
+Magnus Munch Nielsen Sørensen
+mmns@ruc.dk
+ */
+
 import java.util.Arrays;
 import java.util.List;
 
 public class Model{
     public static List<String> baseProgram(){return Arrays.asList("NatBach","HumTek");}
-    public static List<String> subjectModule(){return Arrays.asList("Computer Science","Informatik","Astrology");}
+    public static List<String> subjectModule(){return Arrays.asList("Informatik","Astrology");}
     public static List<String> baseCourse(String base){
         if(base.equals("NatBach")) {
             return Arrays.asList(

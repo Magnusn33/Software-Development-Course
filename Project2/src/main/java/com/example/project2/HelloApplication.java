@@ -1,5 +1,10 @@
 package com.example.project2;
 
+/*
+Magnus Munch Nielsen Sørensen
+mmns@ruc.dk
+ */
+
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.*;

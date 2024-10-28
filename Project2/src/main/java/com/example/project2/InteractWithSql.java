@@ -1,5 +1,10 @@
 package com.example.project2;
 
+/*
+Magnus Munch Nielsen Sørensen
+mmns@ruc.dk
+ */
+
 import java.sql.*;
 
 public class InteractWithSql {
@@ -89,7 +94,7 @@ public class InteractWithSql {
 
     public static void dropAllTables() {
         Connection conn = setConnection();
-        String[] tableNames = {"HumTek", "NatBach", "Informatics", "Computer Science", "Astrology" };
+        String[] tableNames = {"HumTek", "NatBach", "Informatik", "Astrology" };
         try {
             for (String tableName : tableNames) {
                 String sql = "DROP TABLE IF EXISTS " + tableName;
