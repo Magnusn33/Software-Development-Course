@@ -67,7 +67,6 @@ public class InteractWithSql {
         return getDataCmd;
     }
 
-
     public static int getEctsFromTbl(String tableName) {
         Connection conn = setConnection();
         int totalEcts = 0;
@@ -86,5 +85,22 @@ public class InteractWithSql {
         }
 
         return totalEcts;
+    }
+
+    public static void dropAllTables() {
+        Connection conn = setConnection();
+        String[] tableNames = {"HumTek", "NatBach", "Informatics", "Computer Science", "Astronomy" };
+        try {
+            for (String tableName : tableNames) {
+                String sql = "DROP TABLE IF EXISTS " + tableName;
+                try (Statement stmt = conn.createStatement()) {
+                    stmt.execute(sql);
+                } catch (SQLException e) {
+                    System.out.println("Error dropping table: " + tableName);
+                }
+            }
+        } finally {
+            closeConnection(conn);
+        }
     }
 }

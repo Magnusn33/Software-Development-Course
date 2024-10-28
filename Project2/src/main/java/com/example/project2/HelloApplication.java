@@ -26,12 +26,14 @@ public class HelloApplication extends Application {
 
 
     public void showStage(Stage stage, GridPane root) {
-        Scene scene = new Scene(root, 2000, 500);
+        Scene scene = new Scene(root, 2000, 700);
         stage.setScene(scene);
         stage.show();
     }
 
     public static void main(String[] args) {
         launch();
+        System.out.println("Dropping all tables in database to reset");
+        InteractWithSql.dropAllTables();
     }
 }

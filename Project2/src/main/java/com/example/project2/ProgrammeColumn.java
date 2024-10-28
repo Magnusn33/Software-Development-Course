@@ -30,11 +30,14 @@ public class ProgrammeColumn {
 
         //Initialize textarea
         TextArea textarea = new TextArea();
-        textarea = whenChosenProgramme(textarea, b, selectButton, a);
+        textarea = whenChosenProgramme(textarea, b, selectButton, setButton, a);
+
+        //button for calculating ects
+        Button ectsButton = new Button("Calculate ects");
 
         //Initialize ectsArea
         TextArea ectsArea = new TextArea();
-        ectsArea = setEctsArea(ectsArea, b, selectButton, a);
+        ectsArea = setEctsArea(ectsArea, b, ectsButton, a);
 
         //Add to root
         root.add(label, pos, 0);
@@ -43,13 +46,13 @@ public class ProgrammeColumn {
         root.add(b, pos, 3);
         root.add(selectButton, pos, 4);
         root.add(textarea, pos,5);
-        root.add(ectsArea, pos, 6);
+        root.add(ectsButton, pos, 6);
+        root.add(ectsArea, pos, 7);
 
         return root;
     }
 
-    public static TextArea whenChosenProgramme(TextArea textarea, ComboBox<String> setBoxCourse, Button selectButton, ComboBox<String> setBoxProgramme) {
-
+    public static TextArea whenChosenProgramme(TextArea textarea, ComboBox<String> setBoxCourse, Button selectButton, Button setButton, ComboBox<String> setBoxProgramme) {
         selectButton.setOnAction(event -> {
             String sel = setBoxCourse.getValue();
             //Fills out textarea. Appending the old text with the new
@@ -90,6 +93,7 @@ public class ProgrammeColumn {
     }
 
     public static TextArea setEctsArea (TextArea textarea, ComboBox<String> setBoxCourse, Button selectButton, ComboBox<String> setBoxProgramme) {
+
         selectButton.setOnAction(event -> {
             String sel = setBoxProgramme.getValue();
             int ects = InteractWithSql.getEctsFromTbl(sel);
