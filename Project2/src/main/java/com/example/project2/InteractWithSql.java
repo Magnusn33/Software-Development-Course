@@ -66,4 +66,25 @@ public class InteractWithSql {
         }
         return getDataCmd;
     }
+
+
+    public static int getEctsFromTbl(String tableName) {
+        Connection conn = setConnection();
+        int totalEcts = 0;
+
+        String sql = "SELECT SUM(ects) as totalEcts FROM " + tableName;
+
+        try (Statement stmt = conn.createStatement()) {
+            ResultSet rs = stmt.executeQuery(sql);
+            if (rs.next()) {
+                totalEcts = rs.getInt("totalEcts");
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            closeConnection(conn);
+        }
+
+        return totalEcts;
+    }
 }

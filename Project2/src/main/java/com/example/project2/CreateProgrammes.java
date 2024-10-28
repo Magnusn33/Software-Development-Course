@@ -12,6 +12,5 @@ public class CreateProgrammes {
         System.out.println(InteractWithSql.getDataFromTbl("SELECT name FROM Student", "name"));
 
 
-
     }
 }

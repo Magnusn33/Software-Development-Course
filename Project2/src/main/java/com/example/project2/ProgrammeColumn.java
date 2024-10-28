@@ -32,6 +32,10 @@ public class ProgrammeColumn {
         TextArea textarea = new TextArea();
         textarea = whenChosenProgramme(textarea, b, selectButton, a);
 
+        //Initialize ectsArea
+        TextArea ectsArea = new TextArea();
+        ectsArea = setEctsArea(ectsArea, b, selectButton, a);
+
         //Add to root
         root.add(label, pos, 0);
         root.add(a, pos,1);
@@ -39,6 +43,7 @@ public class ProgrammeColumn {
         root.add(b, pos, 3);
         root.add(selectButton, pos, 4);
         root.add(textarea, pos,5);
+        root.add(ectsArea, pos, 6);
 
         return root;
     }
@@ -84,7 +89,18 @@ public class ProgrammeColumn {
         return c;
     }
 
+    public static TextArea setEctsArea (TextArea textarea, ComboBox<String> setBoxCourse, Button selectButton, ComboBox<String> setBoxProgramme) {
+        selectButton.setOnAction(event -> {
+            String sel = setBoxProgramme.getValue();
+            int ects = InteractWithSql.getEctsFromTbl(sel);
+            textarea.setText(String.valueOf(ects));
 
+            //Print data
+            System.out.println(ects);
+        });
+
+        return textarea;
+    }
 
 
 
