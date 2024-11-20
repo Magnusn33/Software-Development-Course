@@ -1,3 +1,8 @@
+/*
+Magnus Munch Nielsen Sørensen
+mmns@ruc.dk
+ */
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;

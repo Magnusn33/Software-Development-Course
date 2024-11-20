@@ -1,3 +1,8 @@
+/*
+Magnus Munch Nielsen Sørensen
+mmns@ruc.dk
+ */
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -13,6 +18,7 @@ class NonTakenCoursesFinder {
             indexSubjectMap.put(entry.getValue(), entry.getKey());
         }
 
+        // Gets the adjecency matrix
         int[][] matrix = subjectGraph.getMatrix();
 
         // Iterate through the adjacency matrix to find non-taken courses
@@ -29,7 +35,7 @@ class NonTakenCoursesFinder {
 
     public static void printNonTakenCourses(List<String[]> nonTakenCourses) {
         System.out.println("Non-Taken Courses:");
-        // Print each pair of non-taken courses
+        // Prints each pair of non-taken courses
         for (String[] coursePair : nonTakenCourses) {
             System.out.println(coursePair[0] + " " + coursePair[1]);
         }

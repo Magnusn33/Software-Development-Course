@@ -1,3 +1,8 @@
+/*
+Magnus Munch Nielsen Sørensen
+mmns@ruc.dk
+ */
+
 import java.util.*;
 
 public class Main {
